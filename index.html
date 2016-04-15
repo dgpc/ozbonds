@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OzBonds.info</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+      #ladderDetails {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-sm-12">
+            <h1>OzBonds</h1>
+            <p class="lead">Build your own inflation-protected pension</p>
+          </div>
+        </div>
+      </div>
+
+      <form>
+        <div class="row">
+          <div class="col-sm-4">
+            Specify desired annual income in today's dollars:
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label class="sr-only" for="annualAmount">Annual Amount (in dollars)</label>
+              <div class="input-group" id="annualAmountGroup">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="annualAmount" placeholder="Annual Amount">
+                <div class="input-group-addon">.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            Specify income duration:
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <div class="input-group" id="forYearsGroup">
+                <div class="input-group-addon">for</div>
+                <select class="form-control" id="forYears">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                  <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
+                  <option>16</option>
+                  <option>17</option>
+                  <option>18</option>
+                  <option>19</option>
+                  <option selected="selected">20</option>
+                  <option>21</option>
+                  <option>22</option>
+                  <option>23</option>
+                  <option>24</option>
+                  <option>25</option>
+                </select> 
+                <div class="input-group-addon">years</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            Calculate which eTIBs may be purchased to provide a guaranteed inflation-proected income stream:
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary" id="buildLadder" onclick="OzBonds.buildLadderButton()">Build Ladder</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="ladderDetails">
+        <!-- populated by javascript -->
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>What are eTIBs?</h3>
+          <p>eTIBs, or 'Exchange-Traded Treasury Indexed Bonds' are securities issued by the Australian Government, whose Face value is adjusted for movements in the Consumer Price Index (CPI). They make coupon payments quarterly, a fixed a percentage of the CPI-adjusted Face Value, as well as paying the CPI-adjusted Face Value back to the investor at the time of the bond's maturity. A ladder of eTIBs allows an investor to overcome the problems of credit risk, inflation risk and interest rate risk normally associated with fixed-income investments.</p>
+
+          <p>Unlike corporate bonds, or term deposits purchased from a bank or credit union, Treasury Bonds do not suffer from Credit Risk, which is the risk that the issuer of the bond (the borrower), will default. The Australian Government guarantees the payments due to investors in Treasury Bonds.</p>
+
+          <p>Unlike Nominal Bonds, the standard type of bond, eTIBs have their Face Value adjusted according to inflation, as measured by the CPI. This eliminates one of the major risks in holding traditional bonds, which is that inflation will outpace the rate of return on your bond, decreasing the holder's purchasing power. There are very few securitised investment products available that prodvide such inflation-protection guarantees.</p>
+
+          <p>By purchasing a ladder, or series, of bonds, as opposed to a traditional bond fund, you also eliminate the effects of interest rate risk on your bond portfolio. A bond fund's net asset value (NAV) will decline in the case of a rise in interest rates, which might leave you unable to meet your income needs. Purchasing a ladder of individual bonds allows you to meet your liabilities precisely, so you don't have to care or worry about the bond's NAV, instead you hold each bond to maturity, and you know in advance precisely how much capital you will receie.</p>
+
+          <h3>Where can I purchase eTIBs?</h3>
+          <p>eTIBs are available from any brokerage account with access to the Australian Stock Exchange (ASX), including Self-Managed Superannuation Funds (SMSFs).</p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4>Notice:</h4>
+            <p>This content is provided for informational purposes only and does not constitute financial advice. It does not take into account your individual objectives, financial situation or specific needs.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.runtime.min.js"></script>
+    <script src="ladderDetails.handlebars" type="text/javascript"></script>
+    <script src="js/ozbonds.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          OzBonds.init($('#annualAmount'), $('#annualAmountGroup'), $('#forYears'), $('#forYearsGroup'), $('#ladderDetails'));
+          OzBonds.setBondPrices(eTIBs.getPrices());
+      });
+    </script>
+  </body>
+</html>

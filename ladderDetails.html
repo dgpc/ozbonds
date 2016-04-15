@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h4>Securities to Purchase</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ASX Symbol</th><th>Maturity Date</th><th>Coupon</th><th>Adjusted Face Value</th><th>Unit Price</th><th>Quantity</th><th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each purchases ~}}
+          <tr>
+            <td>{{symbol}}</td><td>{{maturity}}</td><td>{{coupon}}</td><td>{{face}}</td><td>{{price}}</td><td>{{qty}}</td><td>{{total}}</td>
+          </tr>
+        {{~/each}}
+        <tr>
+          <td colspan="6">&nbsp;</td><td><strong>{{totalCost}}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <h4>Cash Flows</h4>
+    <p>Note that all payments will be adjusted for inflation, the amounts shown are the amounts in {{thisYear}} dollars. With 2% annual inflation, $1 of income shown here will pay out $1.49 in 20 years.</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Year</th><th>Income</th><th>Notes</th>
+        </tr>
+      </thead>
+      {{#each cashflows ~}}
+      <tbody>
+        <tr>
+          <td>
+            <button class="btn" type="button" data-toggle="collapse" data-target="#{{year}}payments" aria-expanded="false" aria-controls="{{year}}payments">+</button> {{year}}</td><td>{{income}}</td><td>{{notes}}</td>
+        </tr>
+      </tbody>
+      <tbody id="{{year}}payments" class="collapse">
+        {{#each itemized ~}}
+        <tr class="warning small">
+          <td>&nbsp;</td><td>{{income}}</td><td>{{notes}}</td>
+        </tr>
+        {{~/each}}
+      </tbody>
+      {{~/each}}
+    </table>
+  </div>
+</div>

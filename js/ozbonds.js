@@ -73,8 +73,15 @@ var OzBonds = (function() {
   var couponsForYear = (function() {
     var thisYear = new Date().getFullYear();
     return function(bond, year) {
-      // TODO: Be more precise: No coupons should be paid after the maturity or before issue, use thisYear.
-      return 4*bond.coupon*bond.face;
+      if (year == thisYear) {
+        // TODO No coupons should be paid before now.
+        return bond.coupon*bond.face;
+      } else if (year == bond.maturity.getFullYear()) {
+        // TODO No coupons should be paid after maturity.
+        return bond.coupon*bond.face;
+      } else {
+        return bond.coupon*bond.face;
+      }
     }
   })();
 

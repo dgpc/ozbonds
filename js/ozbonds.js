@@ -85,6 +85,7 @@ var OzBonds = (function() {
       purchases: [],
       cashflows: [],
       totalCost: 0,
+      totalIncome: 0,
       thisYear: thisYear,
     };
     var amountNeeded = {};
@@ -117,6 +118,7 @@ var OzBonds = (function() {
 
         var cashflowIdx = year - thisYear;
         ladder.cashflows[cashflowIdx].income += qty*perBond;
+        ladder.totalIncome += qty*perBond;
         ladder.cashflows[cashflowIdx].itemized.push({
           income: audPrice.format(qty*perBond),
           notes: bond.symbol + " matures",
@@ -134,6 +136,7 @@ var OzBonds = (function() {
             income: audPrice.format(amountThisYear),
             notes: bond.symbol + " coupon payments",
           });
+          ladder.totalIncome += amountThisYear;
         }
       } else {
         if (lastMissingYear == 0) {
@@ -143,6 +146,7 @@ var OzBonds = (function() {
       }
     }
     ladder.totalCost = audPrice.format(ladder.totalCost);
+    ladder.totalIncome = audPrice.format(ladder.totalIncome);
     for (var year = 0; year <= finalYear - thisYear; year++) {
       ladder.cashflows[year].income = audPrice.format(ladder.cashflows[year].income);
     }

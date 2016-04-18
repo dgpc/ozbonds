@@ -25,6 +25,5 @@ handlers:
     static_files: ladderDetails.handlebars
     upload: ladderDetails.handlebars
 
-  - url: /(.+)
-    secure: always
+  - url: /.well-known/acme-challenge/(.+)
     script: _go_app

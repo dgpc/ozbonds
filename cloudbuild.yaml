@@ -7,5 +7,5 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/ozbonds-run']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['alpha', 'run', 'deploy', 'ozbonds-run', '--image', 'gcr.io/$PROJECT_ID/ozbonds-run', '--region', 'australia-southeast1']
+  args: ['alpha', 'run', 'deploy', 'ozbonds-run', '--image', 'gcr.io/$PROJECT_ID/ozbonds-run', '--region', 'us-central1']
 images: ['gcr.io/$PROJECT_ID/ozbonds-run']

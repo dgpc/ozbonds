@@ -1,0 +1,12 @@
+runtime: go114
+
+handlers:
+  - url: /
+    secure: always
+    static_files: static/index.html
+    upload: static/index.html
+
+  - url: /(.+)
+    secure: always
+    static_files: static/\1
+    upload: static/(.*)
